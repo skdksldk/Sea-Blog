@@ -7,20 +7,29 @@ import Menu from '@mui/material/Menu';
 import MenuIcon from '@mui/icons-material/Menu';
 import Container from '@mui/material/Container';
 import Avatar from '@mui/material/Avatar';
+import Button from '@mui/material/Button';
 import Tooltip from '@mui/material/Tooltip';
 import MenuItem from '@mui/material/MenuItem';
+import HouseIcon from '@mui/icons-material/House';
 import { Link, useNavigate } from 'react-router-dom';
 import { useState } from 'react';
+import { userLogoutAction } from '../redux/actions/userAction';
+import { useDispatch, useSelector } from 'react-redux';
+
+
+
 
 const pages = ['Home', 'Log In'];
 
+
 const Navbar = () => {
 
+    const dispatch = useDispatch();
     const navigate = useNavigate();
+    const { userInfo } = useSelector(state => state.signIn)
 
     const [anchorElNav, setAnchorElNav] = useState(null);
     const [anchorElUser, setAnchorElUser] = useState(null);
-
 
     const handleOpenNavMenu = (event) => {
         setAnchorElNav(event.currentTarget);
@@ -37,6 +46,15 @@ const Navbar = () => {
         setAnchorElUser(null);
     };
 
+    // log out user
+    const logOutUser = () => {
+        dispatch(userLogoutAction());
+        window.location.reload(true);
+        setTimeout(() => {
+            navigate('/');
+        }, 500)
+    }
+
 
 
     return (
@@ -44,6 +62,7 @@ const Navbar = () => {
             <Container >
                 {/* principal Menu */}
                 <Toolbar disableGutters>
+                    <HouseIcon sx={{ display: { xs: 'none', md: 'flex' }, mr: 1 }} />
                     <Typography
                         variant="h6"
                         noWrap
@@ -98,7 +117,7 @@ const Navbar = () => {
                             ))}
                         </Menu>
                     </Box>
-                  
+                    <HouseIcon sx={{ display: { xs: 'flex', md: 'none' }, mr: 1 }} />
                     <Typography
                         variant="h6"
                         noWrap
@@ -177,16 +196,19 @@ const Navbar = () => {
                                 <Typography textAlign="center"><Link style={{ textDecoration: "none" }} to="/admin/dashboard">Admin </Link></Typography>
                             </MenuItem>
                             <MenuItem onClick={handleCloseUserMenu}>
-                                <Typography textAlign="center"><Link style={{ textDecoration: "none" }} to="/user/dashboard">User</Link></Typography>
+                                <Typography textAlign="center"><Link style={{ textDecoration: "none" }} to="/user/dashboard">User </Link></Typography>
                             </MenuItem>
+                            {
+                                userInfo ?
+                                    <MenuItem onClick={logOutUser}>
+                                        <Typography textAlign="center" color='#8e67b2'>Log Out </Typography>
+                                    </MenuItem>
+                                    :
+                                    <MenuItem onClick={handleCloseUserMenu}>
+                                        <Typography textAlign="center"><Link style={{ textDecoration: "none" }} to="/login">Login </Link></Typography>
+                                    </MenuItem>
+                            }
 
-                            <MenuItem>
-                                <Typography textAlign="center" color="#8e67b2">Log out</Typography>
-                            </MenuItem>
-                           
-                            <MenuItem onClick={handleCloseUserMenu}>
-                                <Typography textAlign="center"><Link style={{ textDecoration: "none" }} to="/login">Login </Link></Typography>
-                            </MenuItem>
                         </Menu>
                     </Box>
                 </Toolbar>

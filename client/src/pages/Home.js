@@ -1,42 +1,47 @@
-import React, { useEffect, useState }  from 'react';
+import React, { useEffect, useState } from 'react';
+import PostCard from '../components/PostCard';
+import { Box, Container, Grid } from '@mui/material';
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
-import { Box, Container, Grid } from '@mui/material';
-import PostCard from '../components/PostCard';
+import axios from 'axios';
 import moment from 'moment';
 import Loader from '../components/Loader';
-import axios from 'axios';
+
+
 
 const Home = () => {
 
-  const [posts, setPosts] = useState([]);
-  const [loading, setLoading] = useState(false);
+    const [posts, setPosts] = useState([]);
+    const [loading, setLoading] = useState(false);
 
     //display posts
 
     const showPosts = async () => {
-      setLoading(true);
-      try {
-          const { data } = await axios.get('/api/posts/show');
-          setPosts(data.posts);
-          setLoading(false);
-      } catch (error) {
-          console.log(error.response.data.error);
-      }
-  }
+        setLoading(true);
+        try {
+            const { data } = await axios.get('/api/posts/show');
+            setPosts(data.posts);
+            setLoading(false);
+        } catch (error) {
+            console.log(error.response.data.error);
+        }
+    }
 
-  useEffect(() => {
-      showPosts();
-  }, []);
+    useEffect(() => {
+        showPosts();
+    }, []);
 
-  return (
-  <>
-  <Box sx={{ bgcolor: "#fafafa", minHeight: "100vh" }}>
-   <Navbar />
-    <Container  sx={{ pt: 5, pb: 5, minHeight: "83vh" }}>
-      <Box sx={{flexGrow:1}}>
-        <Grid container spacing={{xs:2, md:3}} columns={{ sx:4, md: 12}}>
-        {
+
+
+    return (
+        <>
+            <Box sx={{ bgcolor: "#fafafa", minHeight: "100vh" }}>
+                <Navbar />
+                <Container sx={{ pt: 5, pb: 5, minHeight: "83vh" }}>
+                    <Box sx={{ flexGrow: 1 }}>
+                        <Grid container spacing={{ xs: 2, md: 3 }} columns={{ xs: 4, sm: 8, md: 12 }}>
+
+                            {
                                 loading ? <Loader /> :
 
                                     posts && posts.map((post, index) => (
@@ -54,14 +59,16 @@ const Home = () => {
                                             />
                                         </Grid>
                                     ))
-        }
-        </Grid>
-      </Box>
-    </Container>
-   <Footer />
-  </Box>
-  </>
-  );
+                            }
+
+                        </Grid>
+                    </Box>
+
+                </Container>
+                <Footer />
+            </Box>
+        </>
+    )
 }
 
-export default Home;
+export default Home

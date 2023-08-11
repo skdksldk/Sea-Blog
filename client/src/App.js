@@ -7,21 +7,23 @@ import 'react-toastify/dist/ReactToastify.css';
 import { ProSidebarProvider } from 'react-pro-sidebar';
 import { Provider } from 'react-redux';
 import store from './redux/store';
-import Log from './pages/Log';
-import Register from './pages/Register';
 import AdminDashboard from './admin/AdminDashboard';
-import UserDashboard from './user/UserDashboard';
 import AdminRoute from './components/AdminRoute';
 import UserRoute from './components/UserRoute';
+import CreatePost from './admin/CreatePost';
+import LogIn from './pages/LogIn';
+import Register from './pages/Register';
 import Layout from './admin/global/Layout'
 import EditPost from './admin/EditPost';
-import CreatePost from './admin/CreatePost';
+import UserDashboard from './user/UserDashboard';
+import SinglePost from './pages/SinglePost';
+
 
 //HOC
 const AdminDashboardHOC = Layout(AdminDashboard);
-const UserDashboardHOC = Layout(UserDashboard);
 const CreatePostHOC = Layout(CreatePost);
 const EditPostHOC = Layout(EditPost);
+const UserDashboardHOC = Layout(UserDashboard);
 
 const App = () => {
   return (
@@ -32,8 +34,9 @@ const App = () => {
           <BrowserRouter>
             <Routes>
               <Route path='/' element={<Home />} />
-              <Route path='/login' element={<Log />} />
+              <Route path='/login' element={<LogIn />} />
               <Route path='/register' element={<Register />} />
+              <Route path='/post/:id' element={<SinglePost />} />
               <Route path='*' element={<NotFound />} />
               <Route path='/admin/dashboard' element={<AdminRoute><AdminDashboardHOC /></AdminRoute>} />
               <Route path='/admin/post/create' element={<AdminRoute><CreatePostHOC /></AdminRoute>} />
@@ -42,7 +45,8 @@ const App = () => {
             </Routes>
           </BrowserRouter>
         </ProSidebarProvider>
-        </Provider>
+
+      </Provider>
     </>
   )
 }

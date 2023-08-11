@@ -52,25 +52,13 @@ const CreatePost = () => {
 
 
 
-    // const createNewPost = async (values) => {
-    //     try {
-    //         const { data } = await axios.post('/api/post/create', values);
-    //         toast.success('post created');
-    //     } catch (error) {
-    //         console.log(error);
-    //         toast.error(error);
-    //     }
-    // }
-
     const createNewPost = async (values) => {
         try {
-            const { data } = await axios.put(`http://localhost:3000/api/post/create`, values);
-            if (data.success === true) {
-                toast.success('post updated');
-            }
+            const { data } = await axios.post('/api/post/create', values);
+            toast.success('post created');
         } catch (error) {
             console.log(error);
-            // toast.error(error);
+            toast.error(error);
         }
     }
 

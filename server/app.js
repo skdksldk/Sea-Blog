@@ -3,6 +3,7 @@ const app = express();
 const mongoose = require("mongoose");
 const morgan = require("morgan");
 const bodyParser = require("body-parser");
+const path = require('path');
 require("dotenv").config();
 var cors = require('cors');
 var cookieParser = require('cookie-parser');
@@ -37,6 +38,20 @@ app.use(cors());
 //ROUTES MIDDLEWARE
 app.use('/api', authRoutes);
 app.use('/api', postRoute);
+
+__dirname = path.resolve()
+
+if (process.env.NODE_ENV === 'production') {
+  app.use(express.static(path.join(__dirname, '/client/build')))
+
+  app.get('*', (req, res) =>
+    res.sendFile(path.resolve(__dirname, 'client', 'build', 'index.html'))
+  )
+} else {
+  app.get('/', (req, res) => {
+    res.send('API is running....')
+  })
+}
 
 
 //error middleware
