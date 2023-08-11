@@ -8,6 +8,7 @@ import { ProSidebarProvider } from 'react-pro-sidebar';
 import { Provider } from 'react-redux';
 import store from './redux/store';
 import Log from './pages/Log';
+import Register from './pages/Register';
 
 const App = () => {
   return (
@@ -19,6 +20,7 @@ const App = () => {
             <Routes>
               <Route path='/' element={<Home />} />
               <Route path='/login' element={<Log />} />
+              <Route path='/register' element={<Register />} />
               <Route path='*' element={<NotFound />} />
             </Routes>
           </BrowserRouter>
