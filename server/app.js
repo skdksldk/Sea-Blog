@@ -15,7 +15,7 @@ require('dotenv').config();
 const authRoutes = require('./routes/authRoutes');
 const postRoute = require('./routes/postRoute');
 
-const MONGO_URI = process.env.DATABASE; // 환경 변수로부터 MongoDB 연결 문자열을 가져옵니다.
+const MONGO_URI = process.env.MONGO_URI; // 환경 변수로부터 MongoDB 연결 문자열을 가져옵니다.
 
 if (!MONGO_URI) {
     console.error('MongoDB connection string not found. Please set the MONGO_URI environment variable.');
@@ -23,7 +23,7 @@ if (!MONGO_URI) {
 }
 
 //database connection
-mongoose.connect(MONGO_URI, {
+mongoose.connect(process.env.MONGO_URI, {
     useNewUrlParser: true,
     useUnifiedTopology: true,
     useCreateIndex: true,
