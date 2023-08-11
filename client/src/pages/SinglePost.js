@@ -107,7 +107,7 @@ const SinglePost = () => {
                                 />
                                 <CardMedia
                                     component="img"
-                                    height="194"
+                                    height="500"
                                     image={image}
                                     alt={title}
                                 />
