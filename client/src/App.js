@@ -14,10 +14,14 @@ import UserDashboard from './user/UserDashboard';
 import AdminRoute from './components/AdminRoute';
 import UserRoute from './components/UserRoute';
 import Layout from './admin/global/Layout'
+import EditPost from './admin/EditPost';
+import CreatePost from './admin/CreatePost';
 
 //HOC
 const AdminDashboardHOC = Layout(AdminDashboard);
 const UserDashboardHOC = Layout(UserDashboard);
+const CreatePostHOC = Layout(CreatePost);
+const EditPostHOC = Layout(EditPost);
 
 const App = () => {
   return (
@@ -32,6 +36,8 @@ const App = () => {
               <Route path='/register' element={<Register />} />
               <Route path='*' element={<NotFound />} />
               <Route path='/admin/dashboard' element={<AdminRoute><AdminDashboardHOC /></AdminRoute>} />
+              <Route path='/admin/post/create' element={<AdminRoute><CreatePostHOC /></AdminRoute>} />
+              <Route path='/admin/post/edit/:id' element={<AdminRoute><EditPostHOC /></AdminRoute>} />
               <Route path='/user/dashboard' element={<UserRoute><UserDashboardHOC /></UserRoute>} />
             </Routes>
           </BrowserRouter>
