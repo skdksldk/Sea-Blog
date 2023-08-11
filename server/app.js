@@ -9,13 +9,21 @@ var cors = require('cors');
 var cookieParser = require('cookie-parser');
 
 const errorHandler = require('./middleware/error');
+require('dotenv').config();
 
 //import routes
 const authRoutes = require('./routes/authRoutes');
 const postRoute = require('./routes/postRoute');
 
+const MONGO_URI = process.env.DATABASE; // 환경 변수로부터 MongoDB 연결 문자열을 가져옵니다.
+
+if (!MONGO_URI) {
+    console.error('MongoDB connection string not found. Please set the MONGO_URI environment variable.');
+    process.exit(1);
+}
+
 //database connection
-mongoose.connect(process.env.DATABASE, {
+mongoose.connect(MONGO_URI, {
     useNewUrlParser: true,
     useUnifiedTopology: true,
     useCreateIndex: true,
