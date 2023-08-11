@@ -6,6 +6,8 @@ import ListItemText from '@mui/material/ListItemText';
 import ListItemAvatar from '@mui/material/ListItemAvatar';
 import Avatar from '@mui/material/Avatar';
 import Typography from '@mui/material/Typography';
+import AssignmentIcon from '@mui/icons-material/Assignment';
+import { green } from '@mui/material/colors';
 
 const CommentList = ({ name, text }) => {
     return (
@@ -13,7 +15,9 @@ const CommentList = ({ name, text }) => {
             <List sx={{ width: '100%', maxWidth: 360, bgcolor: 'background.paper' }}>
                 <ListItem alignItems="flex-start">
                     <ListItemAvatar>
-                        <Avatar alt="Remy Sharp" src="/static/images/avatar/1.jpg" />
+                    <Avatar sx={{ bgcolor: green[500] }}>
+                       <AssignmentIcon />
+                     </Avatar>
                     </ListItemAvatar>
                     <ListItemText
                         primary={name}
