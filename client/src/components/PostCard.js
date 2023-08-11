@@ -11,9 +11,53 @@ import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
 import CommentIcon from '@mui/icons-material/Comment';
 import { Box } from '@mui/material';
 import { Link } from 'react-router-dom';
-import image from '../images/blog.jpg';
+import axios from 'axios';
+import { useSelector } from 'react-redux';
+import { toast } from 'react-toastify';
+// import image from '../images/blog.jpg';
 
-const PostCard = () => {
+const PostCard = ({
+  id,
+  title,
+  subheader,
+  image,
+  content,
+  comments,
+  likes,
+  showPosts,
+  likesId
+}) => {
+
+  const { userInfo } = useSelector(state => state.signIn);
+
+  //add like
+  const addLike = async () => {
+      try {
+          const { data } = await axios.put(`/api/addlike/post/${id}`);
+          // console.log("likes", data.post);
+          if (data.success == true) {
+              showPosts();
+          }
+      } catch (error) {
+          console.log(error);
+          toast.error(error.response.data.error)
+      }
+  }
+
+
+
+  //remove like
+  const removeLike = async () => {
+      try {
+          const { data } = await axios.put(`/api/removelike/post/${id}`);
+          // console.log("remove likes", data.post);
+          if (data.success == true) {
+              showPosts();
+          }
+      } catch (error) {
+          console.log(error);
+      }
+  }
 
   return (
     <Card sx={{ maxWidth: 345 }}>
@@ -23,10 +67,10 @@ const PostCard = () => {
             R
           </Avatar>
         }
-        title="Post title"
-        subheader="Subtitle"
+        title={title}
+        subheader={subheader}
       />
-      <Link to={''}>
+      <Link to={`/post/${id}`}>
       <CardMedia
         component="img"
         height="194"
@@ -36,21 +80,28 @@ const PostCard = () => {
       </Link>
       <CardContent>
         <Typography variant="body2" color="text.secondary">
-          This impressive paella is a perfect party dish and a fun meal to cook
-          together with your guests. Add 1 cup of frozen peas along with the mussels,
-          if you like.
+            {/* {content} */}
+        <Box component='span' dangerouslySetInnerHTML={{ __html: content.split(" ").slice(0, 10).join(" ") + "..." }}></Box>
         </Typography>
       </CardContent>
       <CardActions>
         <Box sx={{ width: '100%', display: 'flex', justifyContent: 'space-between' }}>
                     <Box>
-                                <IconButton aria-label="add to favorites">
+                    {
+                            likesId.includes(userInfo && userInfo.id) ?
+                                <IconButton onClick={removeLike} aria-label="add to favorites">
+                                    <FavoriteIcon sx={{ color: 'red' }} />
+                                </IconButton>
+                                :
+                                <IconButton onClick={addLike} aria-label="add to favorites">
                                     <FavoriteBorderIcon sx={{ color: 'red' }} />
                                 </IconButton>
-                        2 Like(s)
-                    </Box>
+                       }
+
+                       {likes} Like(s)
+                     </Box>
                       <Box>
-                        3
+                        {comments}
                         <IconButton aria-label="comment">
                             <CommentIcon />
                         </IconButton>
