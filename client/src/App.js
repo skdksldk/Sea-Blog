@@ -9,6 +9,15 @@ import { Provider } from 'react-redux';
 import store from './redux/store';
 import Log from './pages/Log';
 import Register from './pages/Register';
+import AdminDashboard from './admin/AdminDashboard';
+import UserDashboard from './user/UserDashboard';
+import AdminRoute from './components/AdminRoute';
+import UserRoute from './components/UserRoute';
+import Layout from './admin/global/Layout'
+
+//HOC
+const AdminDashboardHOC = Layout(AdminDashboard);
+const UserDashboardHOC = Layout(UserDashboard);
 
 const App = () => {
   return (
@@ -22,6 +31,8 @@ const App = () => {
               <Route path='/login' element={<Log />} />
               <Route path='/register' element={<Register />} />
               <Route path='*' element={<NotFound />} />
+              <Route path='/admin/dashboard' element={<AdminRoute><AdminDashboardHOC /></AdminRoute>} />
+              <Route path='/user/dashboard' element={<UserRoute><UserDashboardHOC /></UserRoute>} />
             </Routes>
           </BrowserRouter>
         </ProSidebarProvider>
