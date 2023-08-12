@@ -15,17 +15,19 @@ Sea Blog는 프론트엔드를 하면서 자신이 공부했던 내용들을 정
 
 ### 1. 메인페이지
 
-![헤더](https://github.com/skdksldk/Blog/assets/85090323/da143770-03ed-4b4b-b641-36b28783b87a)
+![헤더2](https://github.com/skdksldk/Sea-Blog/assets/85090323/dd34abcf-b616-4044-90f1-0730f493cb6a)
 
 
-![헤더2](https://github.com/skdksldk/Blog/assets/85090323/f1964e82-5799-4978-aa8f-956a52c75b51)
+![헤더](https://github.com/skdksldk/Sea-Blog/assets/85090323/f2c85d13-00aa-48dc-9459-6b6857847f5f)
+
+
 
 - Header와 Mainpage에 반응형 레이아웃 구현
 - Image Carousel 직접 구현
 
 ### 2. 로그인
 
-![로그인](https://github.com/skdksldk/Blog/assets/85090323/a6c669c2-a74b-4e58-94a6-63612dabff97)
+
 
 
 - Mui를 이용해 뷰를 구축했습니다.
@@ -33,7 +35,8 @@ Sea Blog는 프론트엔드를 하면서 자신이 공부했던 내용들을 정
 
 ### 3. 회원가입
 
-![회원가입](https://github.com/skdksldk/Blog/assets/85090323/cbcfcafa-4934-495f-96f1-e9796127bbe1)
+![회원가입](https://github.com/skdksldk/Sea-Blog/assets/85090323/535a4c4f-b4c8-4e5b-9eb1-8a065112fe81)
+
 
 - 로그인과 마찬가지로 회원가입도 Mui를 이용하여 뷰를 구축했습니다.
 - 로그인과 마찬가지로 reponse를 받지 못할 경우 회원가입에 실패했다는 안내의 alert 처리를 해두었습니다.
