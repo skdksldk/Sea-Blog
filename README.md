@@ -9,7 +9,7 @@ Sea Blog는 프론트엔드를 하면서 자신이 공부했던 내용들을 정
 ### 🏃 구성원
 - Frontend<br/>
   - 김준수(React)
-  - 사용 기술 : `React`, `JavaScript`, `React Router`, `Redux`, `MUI`, 'react-quill" 
+  - 사용 기술 : `React`, `JavaScript`, `React Router`, `Redux`, `MUI`, `react-quill`
  
 ## 🔎 기능 설명
 
