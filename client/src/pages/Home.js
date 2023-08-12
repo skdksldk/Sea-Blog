@@ -6,7 +6,7 @@ import Footer from '../components/Footer';
 import axios from 'axios';
 import moment from 'moment';
 import Loader from '../components/Loader';
-
+import Carousel from '../components/Carousel';
 
 
 const Home = () => {
@@ -37,6 +37,7 @@ const Home = () => {
         <>
             <Box sx={{ bgcolor: "#fafafa", minHeight: "100vh" }}>
                 <Navbar />
+                <Carousel/>
                 <Container sx={{ pt: 5, pb: 5, minHeight: "83vh" }}>
                     <Box sx={{ flexGrow: 1 }}>
                         <Grid container spacing={{ xs: 2, md: 3 }} columns={{ xs: 4, sm: 8, md: 12 }}>
