@@ -45,6 +45,11 @@ https://github.com/skdksldk/Sea-Blog/assets/85090323/ebdbf15a-fe8a-4c4b-abc6-d7b
 
 https://github.com/skdksldk/Sea-Blog/assets/85090323/786074d6-5655-432c-9b68-d663c5df7e0e
 
+## 💻 배포 링크
+
+Blog(https://blog-seas.onrender.com/)
+
+
 ## 💡 Sea Blog를 코딩한 이유
 
 서울 성모병원에서 배웠던 경험을 토대로 그동안 배웠던 기술들을 통해 자신만의 블로그를 개설해서 기록하고 응용할수 있어서 선택했습니다.
