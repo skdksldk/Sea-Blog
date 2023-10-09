@@ -47,7 +47,7 @@ https://github.com/skdksldk/Sea-Blog/assets/85090323/786074d6-5655-432c-9b68-d66
 
 ## 💻 배포 링크
 
-Blog(https://blog-seas.onrender.com/)
+[Blog](https://blog-seas.onrender.com/)
 
 
 ## 💡 Sea Blog를 코딩한 이유
